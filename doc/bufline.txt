@@ -1,0 +1,72 @@
+*bufline.txt*	Lightweight and minimal bufferline for Neovim
+
+==============================================================================
+CONTENTS                                                    *bufline-contents*
+
+    1. Introduction .............................. |bufline-introduction|
+    2. Setup & Configuration ..................... |bufline-setup|
+    3. Highlight Groups .......................... |bufline-highlights|
+
+==============================================================================
+1. Introduction                                         *bufline-introduction*
+
+`bufline.nvim` is a minimal, fast bufferline plugin written in Lua.
+It displays listed buffers in the 'tabline' and automatically handles
+overflowing buffers by keeping the focused buffer visible.
+
+==============================================================================
+2. Setup & Configuration                                       *bufline-setup*
+
+To initialize `bufline.nvim`, call the `setup` function in your Neovim
+configuration:
+>lua
+    require('bufline').setup({
+        separator = '',
+        section_separator = '',
+        modified_indicator = '[M]',
+        highlights = {
+            normal = 'TabLine',
+            focused = 'TabLineSel',
+            fill = 'TabLineFill',
+        }
+    })
+<
+
+                                                               *BufLineOpts*
+Configuration options:
+
+`separator` (string)
+    Separator string inserted between buffer labels in the same section.
+    Default: `''`
+
+`section_separator` (string)
+    Separator string inserted between the left, focused, and right sections.
+    Default: `''`
+
+`modified_indicator` (string)
+    Indicator string displayed next to buffer name when modified.
+    Default: `'[M]'`
+
+`highlights` (table)
+    Highlight configuration table. See |bufline-highlights|.
+
+==============================================================================
+3. Highlight Groups                                       *bufline-highlights*
+
+                                                         *BufLineHighlights*
+The following highlight group settings can be configured under `highlights`:
+
+`normal` (string|table)
+    Highlight group name or spec table for unfocused buffer labels.
+    Default: `'TabLine'`
+
+`focused` (string|table)
+    Highlight group name or spec table for the active buffer label.
+    Default: `'TabLineSel'`
+
+`fill` (string|table)
+    Highlight group name or spec table for the remaining tabline space.
+    Default: `'TabLineFill'`
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
